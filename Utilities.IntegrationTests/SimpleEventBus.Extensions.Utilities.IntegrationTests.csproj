@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="Features/**/*.feature" />
+        <EmbeddedResource Include="Features/**/*.feature" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="GivePenny.SimpleEventBus.Testing" Version="0.1.23" />
+        <PackageReference Include="GivePenny.SimpleEventBus.InMemoryTransport" Version="0.1.23" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+        <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
+        <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Utilities\SimpleEventBus.Extensions.Utilities.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,66 @@
+variables:
+  major: 0
+  minor: 1
+  patch: $[counter(format('major {0} minor {1}', variables['major'], variables['minor']), 3)]
+
+name: $[format('{0}.{1}.{2}', variables['major'], variables['minor'], variables['patch'])]
+
+resources:
+  - repo: self
+
+trigger:
+  - master
+
+jobs:
+  - job: Build
+    pool:
+      name: Private Linux
+
+    steps:    
+
+      - task: NuGetToolInstaller@0
+        displayName: 'Use NuGet tooling'
+
+      - task: DotNetCoreCLI@2
+        displayName: 'Build solution'
+        inputs:    
+          command: build
+          projects: '**/*.csproj'
+          arguments: '--configuration Release /p:Version=$(Build.BuildNumber)'
+
+      - task: DotNetCoreCLI@2
+        displayName: 'Run unit tests'
+        inputs:
+          command: test
+          projects: '**/*.UnitTests.csproj'
+          configuration: Release
+          nobuild: true
+
+      - task: DotNetCoreCLI@2
+        displayName: 'Run integration tests'
+        inputs:
+          command: test
+          projects: '**/*.IntegrationTests.csproj'
+          configuration: Release
+          nobuild: true
+        env:
+          AzureServiceBusTransport__ConnectionStrings__0: "$(AzureServiceBusTransport__ConnectionStrings__0)"
+
+      - task: DotNetCoreCLI@2
+        displayName: 'Package'
+        inputs:
+          command: pack
+          searchPatternPack: '**/SimpleEventBus.Extensions.AspNetCore.csproj;SimpleEventBus.Extensions.Utilities.csproj'
+          configuration: Release
+          nobuild: true
+          versioningScheme: byBuildNumber
+          verbosityPack: normal
+
+      - task: NuGetCommand@2
+        displayName: 'Push packages to Nuget'
+        inputs:
+          command: push
+          nuGetFeedType: external
+          publishFeedCredentials: 'GivePenny Nuget'
+          packagesToPush: '$(Build.ArtifactStagingDirectory)/**/GivePenny.SimpleEventBus.*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+          versioningScheme: byBuildNumber

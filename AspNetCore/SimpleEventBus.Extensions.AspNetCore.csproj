@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <PackageId>GivePenny.SimpleEventBus.Extensions.AspNetCore</PackageId>
+        <Authors>GivePenny</Authors>
+        <Company>GivePenny</Company>
+        <Product>SimpleEventBus</Product>
+        <Copyright>Copyright 2019 Raising Technology Ltd</Copyright>
+        <Description>ASP.NET Core extensions to help dispatch messages with GivePenny SimpleEventBus.</Description>
+        <PackageLicenseUrl>https://raw.githubusercontent.com/GivePenny/SimpleEventBus.Extensions/master/Licence.md</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/GivePenny/SimpleEventBus.Extensions</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/GivePenny/SimpleEventBus.Extensions</RepositoryUrl>
+        <RepositoryType>GitHub</RepositoryType>
+        <PackageIconUrl>https://secure.gravatar.com/avatar/96b7defc765a3a242e00557bb65d37ef?s=256</PackageIconUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="GivePenny.SimpleEventBus.Abstractions" Version="0.1.23" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+</Project>
