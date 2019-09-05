@@ -9,7 +9,7 @@
         <Product>SimpleEventBus</Product>
         <Copyright>Copyright 2019 Raising Technology Ltd</Copyright>
         <Description>.NET Core extensions to help dispatch and handle messages with GivePenny SimpleEventBus.</Description>
-        <PackageLicenseUrl>https://raw.githubusercontent.com/GivePenny/SimpleEventBus.Extensions/master/Licence.md</PackageLicenseUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/GivePenny/SimpleEventBus.Extensions</PackageProjectUrl>
         <RepositoryUrl>https://github.com/GivePenny/SimpleEventBus.Extensions</RepositoryUrl>
         <RepositoryType>GitHub</RepositoryType>

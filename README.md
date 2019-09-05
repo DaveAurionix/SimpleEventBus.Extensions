@@ -6,6 +6,12 @@ Warning!  This is not yet considered to be production-ready.  API surface is evo
 
 ## Overview
 
+TODO
+
+### Feature highlights
+
+* DomainUnderTest - deploy subscribers to production, but still test in isolation
+
 ## Getting started
 
 TODO - Reference example repositories
